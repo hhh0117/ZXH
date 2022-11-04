@@ -1,0 +1,87 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+li {
+    list-style: none;
+}
+
+a {
+    text-decoration: none;
+}
+
+.header {
+    height: 42px;
+    margin: 30px auto;
+}
+
+.w {
+    width: 1200px;
+    margin: auto;
+}
+
+body {
+    background: url(picture/bg.png);
+}
+
+.f {
+    margin-left: 60px;
+    float: left;
+}
+
+.f ul li {
+    float: left;
+    margin: 0 15px;
+
+}
+
+.f ul li a {
+    height: 41px;
+    display: block;
+    padding: 0 10px;
+    line-height: 41px;
+    font-size: 18px;
+    color: #050505;
+}
+
+.f ul li a:hover {
+    border-bottom: 2px solid #00a4ff;
+    color: #00a4ff;
+}
+
+.s {
+    margin-right: 60px;
+    float: right;
+}
+
+.s ul li {
+    float: right;
+    margin: 0 15px;
+}
+
+.t {
+    margin-left: 600px;
+    margin-top: 100px;
+    float: left;
+}
+
+.t ul li {
+    float: left;
+    margin: 15px;
+}
+
+.duihuakuang input {
+    float: left;
+    margin-left: 600px;
+    width: 412px;
+    height: 42px;
+}
+
+.duihuakuang button {
+    float: left;
+    width: 75px;
+    height: 42px;
+    background: url(picture/search.png);
+    border: 0px;
+}
