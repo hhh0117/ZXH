@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>TO DO LIST</title>
+  <style>
+    body {
+      margin: 0;
+    }
+
+    .header {
+      height: 200px;
+      width: 100%;
+      background-color: gray;
+    }
+
+    .header p {
+      color: aliceblue;
+      font-size: 40px;
+      font-family: "Times New Roman";
+      margin: 0;
+      padding-top: 50px;
+      text-align: center;
+    }
+
+    .box {
+      width: 400px;
+      padding-top: 40px;
+      margin: 0 auto;
+    }
+
+    .box .iptbox {
+      float: left;
+      margin: 0 auto;
+    }
+
+    .box .iptbox .ipt {
+      border-width: 0ch;
+      border-top-left-radius: 15px;
+      border-bottom-left-radius: 15px;
+    }
+
+    .box button {
+      height: 42px;
+      background-color: rgb(94, 179, 240);
+      float: left;
+      border-width: 0ch;
+      border-top-right-radius: 15px;
+      border-bottom-right-radius: 15px;
+    }
+
+    ul li {
+      list-style: decimal;
+      position: relative;
+      padding-left: 20px;
+      height: 40px;
+      line-height: 40px;
+    }
+
+    ul li:nth-child(odd) {
+      background-color: #f9f9f9;
+    }
+
+    ul li:hover {
+      cursor: pointer;
+      background-color: #dddddd;
+    }
+
+    .close {
+      float: right;
+      right: 0px;
+      top: 0px;
+      padding: 0px 20px;
+      font-size: 16px;
+    }
+
+    .close:hover {
+      background-color: #4d4645;
+      color: white;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="header">
+    <p>My To Do List</p>
+    <div class="box">
+      <div class="iptbox">
+        <input class="ipt" placeholder="添加你要做的吧" style="height: 40px; width: 350px; "></input>
+      </div>
+      <button onclick=Addchild()>add</button>
+    </div>
+  </div>
+  <ul id="list">
+  </ul>
+
+
+  <script type="text/javascript">
+
+    function Addchild() {
+      //添加代办事项
+      let list = document.getElementById("list");
+      let node = document.createElement("li");
+      let input = document.getElementsByClassName('ipt')[0].value;
+      let textnode = document.createTextNode(input);
+
+      node.appendChild(textnode);
+      list.appendChild(node);
+
+      //添加删除按钮
+      let span = document.createElement('span');
+      let txt = document.createTextNode('x');
+
+      span.className = 'close';
+      span.appendChild(txt);
+      node.appendChild(span);
+
+      //添加删除事件
+      let close = document.getElementsByClassName("close");
+      for (var i = 0; i < close.length; i++) {
+        close[i].onclick = function () {
+          var told = confirm("确认删除该项吗？");
+          if (told) {
+            let div = this.parentElement;
+            div.parentElement.removeChild(div);
+          }
+        }
+      }
+
+    }
+
+  </script>
+</body>
+
+</html>
