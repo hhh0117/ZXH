@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        setTimeout(() => {//异步任务,最后执行
+            console.log('setTimeout start');//5.setTimeout start: 同步直接执行
+            new Promise((resolve) => {
+                console.log('promise1 start');//6.promise1 start: 同步直接执行
+                resolve();
+            }).then(() => {
+                console.log('promise1 end');//8.promise1 end: then方法内容异步任务，最后执行
+            })
+            console.log('setTimeout end');//7.setTimeout end: 同步直接执行
+        }, 0);
+
+        function promise2() {
+            return new Promise((resolve) => {
+                console.log('promise2');//2.promise2: Promise构造函数内部代码立即执行
+                resolve();
+            })
+        }
+        async function async1() {
+            console.log('async1 start');//1.async1: start await前同步执行
+            await promise2();//执行promise2()函数
+            console.log('async1 end');//4.async1 end: await后异步执行,在3同步任务后执行
+        }
+        async1();//最先执行
+        console.log('script end');//3.script end: 最后一个同步任务
+    </script>
+</body>
+
+</html>
