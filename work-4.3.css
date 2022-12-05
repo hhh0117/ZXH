@@ -1,0 +1,151 @@
+body {
+    margin: 0;
+    box-sizing: border-box;
+}
+
+.output {
+    display: flex;
+    flex-direction: column;
+    background-color: black;
+    color: white;
+    /* min-height: 50px;
+    padding: 5px;
+    margin: 0 1px 10px;
+    border-radius: 0.25rem;
+    box-shadow: inset 1px 1px 5px rgba(0, 0, 0, 0.5); */
+}
+
+.input {
+    display: flex;
+    flex-wrap: wrap;
+    /* justify-content: space-between; */
+}
+
+.l1 {
+    display: flex;
+    width: 800px;
+    height: 100px;
+    background: grey;
+    flex-direction: row;
+    justify-content: space-around;
+    flex-wrap: nowrap;
+    align-content: space-around;
+}
+
+.l2 {
+    display: flex;
+    width: 800px;
+    height: 100px;
+    background: grey;
+    flex-direction: row;
+    justify-content: space-around;
+    flex-wrap: nowrap;
+    align-content: space-around;
+}
+
+.l3 {
+    display: flex;
+    width: 800px;
+    height: 100px;
+    background: grey;
+    flex-direction: row;
+    justify-content: space-around;
+    flex-wrap: nowrap;
+    align-content: space-around;
+}
+
+.l4 {
+    display: flex;
+    width: 800px;
+    height: 100px;
+    background: grey;
+    flex-direction: row;
+    justify-content: space-around;
+    flex-wrap: nowrap;
+    align-content: space-around;
+}
+
+.l5 {
+    display: flex;
+    width: 800px;
+    height: 100px;
+    background: grey;
+    flex-direction: row;
+    justify-content: space-around;
+    flex-wrap: nowrap;
+    align-content: space-around;
+}
+
+.a1 {
+    width: 400px;
+    height: 100px;
+}
+
+
+.l1 button {
+    width: 200px;
+    height: 100px;
+
+    background-color: white;
+    box-shadow: 1px 1px 1px 1px black;
+    color: black;
+    font-size: 20px;
+    font-weight: bold;
+    cursor: pointer;
+    outline: none;
+    border: none;
+}
+
+
+
+.l2 button {
+    width: 200px;
+    height: 100px;
+    background-color: white;
+    box-shadow: 1px 1px 1px 1px black;
+    color: black;
+    font-size: 20px;
+    font-weight: bold;
+    cursor: pointer;
+    outline: none;
+    border: none;
+}
+
+.l3 button {
+    width: 200px;
+    height: 100px;
+    background-color: white;
+    box-shadow: 1px 1px 1px 1px black;
+    color: black;
+    font-size: 20px;
+    font-weight: bold;
+    cursor: pointer;
+    outline: none;
+    border: none;
+}
+
+.l4 button {
+    width: 200px;
+    height: 100px;
+    background-color: white;
+    box-shadow: 1px 1px 1px 1px black;
+    color: black;
+    font-size: 20px;
+    font-weight: bold;
+    cursor: pointer;
+    outline: none;
+    border: none;
+}
+
+.l5 button {
+    width: 200px;
+    height: 99px;
+    background-color: white;
+    box-shadow: 1px 1px 1px 1px black;
+    color: black;
+    font-size: 20px;
+    font-weight: bold;
+    cursor: pointer;
+    outline: none;
+    border: none;
+}

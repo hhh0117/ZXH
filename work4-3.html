@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="work-4.3.css">
+    <title>Document</title>
+</head>
+
+<body>
+    <div>
+        <div class=output>
+            <pre class="upper"></pre>
+            <pre class="lower">0</pre>
+        </div>
+        <div class="input">
+            <div class="l1"><button onclick="pressAllClear()" style="width:400px">AC</button>
+                <button onclick="pressClear()">清除<i class="fas fa-backspace"></i></button>
+                <button onclick="pressOperator(this)" style="background-color:lightgrey;">&div;</button>
+            </div>
+            <div class="l2">
+                <button onclick="pressNum(this)">1</button>
+                <button onclick="pressNum(this)">2</button>
+                <button onclick="pressNum(this)">3</button>
+                <button onclick="pressOperator(this)" style="background-color:lightgrey;">&times;</button>
+            </div>
+            <div class="l3"><button onclick="pressNum(this)">4</button>
+                <button onclick="pressNum(this)">5</button>
+                <button onclick="pressNum(this)">6</button>
+                <button onclick="pressOperator(this)" style="background-color:lightgrey;">+</button>
+            </div>
+            <div class="l4"> <button onclick="pressNum(this)">7</button>
+                <button onclick="pressNum(this)">8</button>
+                <button onclick="pressNum(this)">9</button>
+                <button onclick="pressOperator(this)" style="background-color:lightgrey;">-</button>
+            </div>
+            <div class="l5">
+                <button onclick="pressDot()">.</button>
+                <button onclick="pressNum(this)">0</button>
+                <button onclick="pressEqual()" style=" background-color:orange;width:400px">=</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // javascript calculator
+
+        // upper output is for showing the expression
+        let outputUpper = document.querySelector('#upper');
+        // lower output is for showing the result
+        let outputLower = document.querySelector('#lower');
+
+        // function to get number input
+        function pressNum(e) {
+            if (outputLower.innerHTML === '0') {
+                outputLower.innerHTML = e.innerHTML;
+            } else {
+                outputLower.innerHTML += e.innerHTML;
+            }
+        }
+
+        // clear all
+        function pressAllClear() {
+            outputUpper.innerHTML = '';
+            outputLower.innerHTML = '0';
+        }
+
+        // clear one
+        function pressClear() {
+            outputLower.innerHTML = outputLower.innerHTML.slice(0, -1);
+        }
+
+        // calculate button
+        function pressEqual() {
+            let exp = outputLower.innerHTML;
+            outputUpper.innerHTML = exp;
+            exp = exp.replace(/×/g, '*').replace(/÷/g, '/');
+            let result;
+            try {
+                result = eval(exp);
+                // if decimal number more than 4 decimal places
+                if (result.toString().indexOf('.') !== -1) {
+                    result = result.toFixed(4);
+                }
+            } catch (e) {
+                result = 'Error';
+            }
+            outputLower.innerHTML = result;
+        }
+
+        function pressOperator(e) {
+            // check last operator
+            let lastOperator = outputLower.innerHTML.slice(-1);
+            if (lastOperator === '+' || lastOperator === '-' || lastOperator === '×' || lastOperator === '÷') {
+                output.innerHTML = outputLower.innerHTML.slice(0, -1) + e.innerHTML;
+            } else {
+                outputLower.innerHTML += e.innerHTML;
+            }
+        }
+        document.addEventListener('keydown', function (e) {
+            switch (e.key) {
+                case '0':
+                    pressNum(document.querySelector('button:nth-child(2)'));
+                    break;
+                case '1':
+                    pressNum(document.querySelector('button:nth-child(5)'));
+                    break;
+                case '2':
+                    pressNum(document.querySelector('button:nth-child(6)'));
+                    break;
+                case '3':
+                    pressNum(document.querySelector('button:nth-child(7)'));
+                    break;
+                case '4':
+                    pressNum(document.querySelector('button:nth-child(9)'));
+                    break;
+                case '5':
+                    pressNum(document.querySelector('button:nth-child(10)'));
+                    break;
+                case '6':
+                    pressNum(document.querySelector('button:nth-child(11)'));
+                    break;
+                case '7':
+                    pressNum(document.querySelector('button:nth-child(13)'));
+                    break;
+                case '8':
+                    pressNum(document.querySelector('button:nth-child(14)'));
+                    break;
+                case '9':
+                    pressNum(document.querySelector('button:nth-child(15)'));
+                    break;
+                case '+':
+                    pressOperator(document.querySelector('button:nth-child(4)'));
+                    break;
+                case '-':
+                    pressOperator(document.querySelector('button:nth-child(8)'));
+                    break;
+                case '*':
+                    pressOperator(document.querySelector('button:nth-child(12)'));
+                    break;
+                case '/':
+                    pressOperator(document.querySelector('button:nth-child(16)'));
+                    break;
+
+                case 'Enter':
+                    e.preventDefault();
+                    pressEqual();
+                    break;
+                case 'Backspace':
+                    pressClear();
+                    break;
+                case 'Escape':
+                    pressAllClear();
+                    break;
+            }
+        });
+    </script>
+
+</body>
+
+</html>
