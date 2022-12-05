@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        .upper {
+            font-size: 40px;
+        }
+
+        body {
+            margin: 0;
+            box-sizing: border-box;
+        }
+
+        .output {
+            display: flex;
+            flex-direction: column;
+            background-color: black;
+            color: white;
+            /* min-height: 50px;
+    padding: 5px;
+    margin: 0 1px 10px;
+    border-radius: 0.25rem;
+    box-shadow: inset 1px 1px 5px rgba(0, 0, 0, 0.5); */
+        }
+
+        .input {
+            display: flex;
+            flex-wrap: wrap;
+            /* justify-content: space-between; */
+        }
+
+        .l1 {
+            display: flex;
+            width: 800px;
+            height: 100px;
+            background: grey;
+            flex-direction: row;
+            justify-content: space-around;
+            flex-wrap: nowrap;
+            align-content: space-around;
+        }
+
+        .l2 {
+            display: flex;
+            width: 800px;
+            height: 100px;
+            background: grey;
+            flex-direction: row;
+            justify-content: space-around;
+            flex-wrap: nowrap;
+            align-content: space-around;
+        }
+
+        .l3 {
+            display: flex;
+            width: 800px;
+            height: 100px;
+            background: grey;
+            flex-direction: row;
+            justify-content: space-around;
+            flex-wrap: nowrap;
+            align-content: space-around;
+        }
+
+        .l4 {
+            display: flex;
+            width: 800px;
+            height: 100px;
+            background: grey;
+            flex-direction: row;
+            justify-content: space-around;
+            flex-wrap: nowrap;
+            align-content: space-around;
+        }
+
+        .l5 {
+            display: flex;
+            width: 800px;
+            height: 100px;
+            background: grey;
+            flex-direction: row;
+            justify-content: space-around;
+            flex-wrap: nowrap;
+            align-content: space-around;
+        }
+
+        .a1 {
+            width: 400px;
+            height: 100px;
+        }
+
+
+        .l1 button {
+            width: 200px;
+            height: 100px;
+
+            background-color: white;
+            box-shadow: 1px 1px 1px 1px black;
+            color: black;
+            font-size: 20px;
+            font-weight: bold;
+            cursor: pointer;
+            outline: none;
+            border: none;
+        }
+
+
+
+        .l2 button {
+            width: 200px;
+            height: 100px;
+            background-color: white;
+            box-shadow: 1px 1px 1px 1px black;
+            color: black;
+            font-size: 20px;
+            font-weight: bold;
+            cursor: pointer;
+            outline: none;
+            border: none;
+        }
+
+        .l3 button {
+            width: 200px;
+            height: 100px;
+            background-color: white;
+            box-shadow: 1px 1px 1px 1px black;
+            color: black;
+            font-size: 20px;
+            font-weight: bold;
+            cursor: pointer;
+            outline: none;
+            border: none;
+        }
+
+        .l4 button {
+            width: 200px;
+            height: 100px;
+            background-color: white;
+            box-shadow: 1px 1px 1px 1px black;
+            color: black;
+            font-size: 20px;
+            font-weight: bold;
+            cursor: pointer;
+            outline: none;
+            border: none;
+        }
+
+        .l5 button {
+            width: 200px;
+            height: 99px;
+            background-color: white;
+            box-shadow: 1px 1px 1px 1px black;
+            color: black;
+            font-size: 20px;
+            font-weight: bold;
+            cursor: pointer;
+            outline: none;
+            border: none;
+        }
+    </style>
+
+    <title>Document</title>
+</head>
+
+<body>
+    <div>
+        <div class=output style="width:800px;height:100px">
+            <pre class="upper" id="input"></pre>
+        </div>
+        <div class="input">
+            <div class="l1"><button onclick="pressAllClear()" id='C' style="width:400px">AC</button>
+                <button onclick="pressClear()">清除<i class="fas fa-backspace"></i></button>
+                <button onclick="pressOperator(this)" id="/" style="background-color:lightgrey;">÷</button>
+            </div>
+            <div class="l2">
+                <button onclick="pressNum(this)" id='1'>1</button>
+                <button onclick="pressNum(this)" id='2'>2</button>
+                <button onclick="pressNum(this)" id='3'>3</button>
+                <button onclick="pressOperator(this)" id="*" style="background-color:lightgrey;">*</button>
+            </div>
+            <div class="l3"><button onclick="pressNum(this)" id="4">4</button>
+                <button onclick="pressNum(this)" id="5">5</button>
+                <button onclick="pressNum(this)" id="6">6</button>
+                <button onclick="pressOperator(this)" id="+" style="background-color:lightgrey;">+</button>
+            </div>
+            <div class="l4"> <button onclick="pressNum(this)" id="7">7</button>
+                <button onclick="pressNum(this)" id="8">8</button>
+                <button onclick="pressNum(this)" id="9">9</button>
+                <button onclick="pressOperator(this)" id="-" style="background-color:lightgrey;">-</button>
+            </div>
+            <div class="l5">
+                <button onclick="pressDot()" id=".">.</button>
+                <button onclick="pressNum(this)" id="0">0</button>
+                <button onclick="pressEqual()" id='=' style=" background-color:orange;width:400px">=</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        var 数字1 = 0;
+        var 按钮标识 = 0;
+        var 运算符 = '+';
+        var input = document.getElementById('input');
+        function pressNum(btn) {
+            if (按钮标识 == 0) {
+                input.innerText += btn.innerText;
+            } else {
+                input.innerText = btn.innerText;
+            }
+            按钮标识 = 0;
+        }
+        function pressOperator(btn) {
+            数字1 = input.innerText;
+            运算符 = btn.innerText;
+            按钮标识 = 1;
+        }
+        function pressEqual(btn) {
+            var result = 0;
+            switch (运算符) {
+                case '+':
+                    result = parseFloat(数字1) + parseFloat(input.innerText);
+                    break;
+                case '-':
+                    result = parseFloat(数字1) - parseFloat(input.innerText);
+                    break;
+
+                case '*':
+                    result = parseFloat(数字1) * parseFloat(input.innerText);
+                    break;
+
+                case '÷':
+                    result = parseFloat(数字1) / parseFloat(input.innerText);
+                    break;
+
+            }
+            input.innerText = result;
+        }
+        function pressAllClear(btn) {
+            input.innerText = '';
+            数字1 = 0;
+            按钮标识 = 0;
+            运算符 = '+';
+        }
+
+        function pressClear() {
+            input.innerHTML = input.innerHTML.slice(0, -1);
+        }
+
+        function pressDot() {
+            input.innerHTML += '.';
+
+        }
+
+
+    </script>
+
+</body>
+
+</html>
